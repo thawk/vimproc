@@ -47,7 +47,7 @@
 #endif
 
 /* for ioctl() */
-#ifdef __APPLE__ 
+#ifdef __APPLE__
 # include <sys/ioctl.h>
 #endif
 
@@ -479,7 +479,7 @@ vp_pipe_open(char *args)
         }
         argv[argc] = NULL;
 
-        if (execv(argv[0], argv) < 0) {
+        if (execvp(argv[0], argv) < 0) {
             free(argv);
             goto child_error;
         }
@@ -647,7 +647,7 @@ vp_pty_open(char *args)
         }
         argv[argc] = NULL;
 
-        if (execv(argv[0], argv) < 0) {
+        if (execvp(argv[0], argv) < 0) {
             /* error */
             free(argv);
 
@@ -940,6 +940,6 @@ vp_decode(char *args)
     return vp_stack_return(&_result);
 }
 
-/* 
+/*
  * vim:set sw=4 sts=4 et:
  */
